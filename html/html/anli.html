@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="../css/ctmon.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/ctmon.css" />
 	</head>
+
 	<body>
 		<!----------------top-------------------------------------->
 		<div class="about_top">
 			<div class="about_top_cont">
 				<div class="logo_a">
 					<a href="index.html">
-						<img src="../img/qa/logo_a.jpg"/>
+						<img src="../img/qa/logo_a.jpg" />
 					</a>
 				</div>
 				<div class="about_nav">
 					<div class="about_nav_top">
 						<div class="about_nav_topl">
 							<div class="about_nav_topla">
-								<img src="../img/qa/about_a.jpg"/>
+								<img src="../img/qa/about_a.jpg" />
 							</div>
 							<div class="about_nav_toplb">
-								<img src="../img/qa/about_b.jpg"/>
+								<img src="../img/qa/about_b.jpg" />
 							</div>
 							<!--跳转到关于我们-->
-							<a href="#"class="a">ABOUT US</a>
+							<a href="#" class="a">ABOUT US</a>
 						</div>
 						<div class="about_nav_topr">
 							400-606-6638
@@ -32,7 +34,7 @@
 					</div>
 					<div class="about_nav_bot">
 						<div class="about_nava">
-							<a href="#">产品升级</a>
+							<!--<a href="#">产品升级</a>-->
 							<a href="fangan.html">解决方案</a>
 							<a href="fuwu.html">服务专区</a>
 							<a href="zhishi.html">知识学院</a>
@@ -53,7 +55,7 @@
 			<div class="main">
 				<div class="about_conta_top">
 					<div class="about_conta_topl">
-						<img src="../img/anli/case_a.jpg"/>
+						<img src="../img/anli/case_a.jpg" />
 					</div>
 					<div class="about_conta_topr">
 						<div class="about_conta_toprt">
@@ -70,10 +72,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="about_conta_mid" style="margin-top:50px">
+
 				</div>
 			</div>
+			
+			<ul id="a"></ul>
+			
 		</div>
-		
+		</div>
+
 		<!-----------bottom---------------------------------------->
 		<div class="link about_link_cont">
 			<div class="main">
@@ -136,13 +144,13 @@
 					<div class="cz_link">
 						<div class="cz_link_a">
 							<div class="a">
-								<img src="../img/qa/20140417172111_3368.jpg"/>
+								<img src="../img/qa/20140417172111_3368.jpg" />
 							</div>
 							<div class="b">创同盟手机网站！</div>
 						</div>
 						<div class="cz_link_a">
 							<div class="a">
-								<img src="../img/qa/20140417172211_5092.jpg"/>
+								<img src="../img/qa/20140417172211_5092.jpg" />
 							</div>
 							<div class="b">关注创同盟企业微信</div>
 						</div>
@@ -153,28 +161,28 @@
 								<a href="#" class="c">企业微博</a>
 							</div>
 							<div class="cz_link_bc">
-								<img src="../img/qa/about_ff.jpg"/>
+								<img src="../img/qa/about_ff.jpg" />
 							</div>
-						</div>	
+						</div>
 						<div class="cz_link_c">
 							<p class="a">联系我们</p>
-							<p class="b">地址/Add：   广东省深圳市宝安区宝民一路宝通大厦27楼 </p>
-							<p class="c">电话/Tel：   0755-32998669</p>
+							<p class="b">地址/Add： 广东省深圳市宝安区宝民一路宝通大厦27楼 </p>
+							<p class="c">电话/Tel： 0755-32998669</p>
 							<p class="d">邮箱/Mail：
 								<a href="#">zhouhui@ctmon.cn</a>
 							</p>
 						</div>
 						<div class="cnzz">
-							<img src="../img/qa/2.gif"/>
-							<img src="../img/qa/21.gif"/>
+							<img src="../img/qa/2.gif" />
+							<img src="../img/qa/21.gif" />
 						</div>
 						<div class="copyright">
 							<div class="a">
-								<img src="../img/qa/about_gg.jpg"/>
+								<img src="../img/qa/about_gg.jpg" />
 							</div>
 							<div class="b">
-								Copyright © 深圳创同盟科技 All Rights Reserved 版权 粤ICP备13075754号 
-								<img src="../img/qa/about_gg.jpg" style="padding-left: 20px;"/>
+								Copyright © 深圳创同盟科技 All Rights Reserved 版权 粤ICP备13075754号
+								<img src="../img/qa/about_gg.jpg" style="padding-left: 20px;" />
 							</div>
 						</div>
 					</div>
@@ -183,4 +191,175 @@
 		</div>
 		<!-----------bottom---------------------------------------->
 	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function createAnli(obj) {
+			var mid = $('.about_conta_mid');
+			var midMain = $('<a/>');
+			mid.append(midMain);
+			midMain.addClass('anli_midMain');
+			midMain[0].href = "http://127.0.0.1/ctmon/html/html/inanli.html?a=" + obj.anli_id;
+			var midImg = $('<img/>');
+			midMain.append(midImg);
+			midImg.addClass('anli_midImg');
+			midImg[0].src = "../img/anli/" + obj.anli_img;
+			var hid = $('<div/>');
+			midMain.append(hid);
+			hid.addClass('anli_hid');
+			var hidText = $('<p>' + obj.anli_title + '<p/>' + '<p>' + obj.anli_synopsis + '<p/>');
+			hid.append(hidText);
+		}
+
+		function requestAjax(url, callBack) {
+			var request = new XMLHttpRequest();
+			request.open('GET', url, true);
+			request.send();
+			request.onreadystatechange = function() {
+				if(request.readyState == 4 && request.status == 200) {
+					var str = request.responseText;
+					var obj = JSON.parse(str);
+					if(callBack) {
+						callBack(obj);
+					}
+				}
+			}
+		}
+		requestAjax("../../php/code/anli.php", function(obj) {
+			for(var i = 0; i < 16; i++) {
+				createAnli(obj[i]);
+			}
+			//	  		console.log(obj);
+		});
+
+		//分页
+//		(function() {
+//			// 1.总共有多少行数据
+//			// 2.第一页所显示的数据内容详情
+//			// 3.点击页数获得当前也的数据详情
+//			var perpage_num = 16;
+//
+//			function pageNum() {
+//				$.ajax({
+//					url: "../../php/code/page.php?page=1&num=1",
+//					type: "GET",
+//					success: function(value) {
+//						console.log(value);
+//						 var obj = JSON.parse(value);
+//						 console.log(obj)
+//						 var count = obj.total;
+//						 console.log(count)
+//						 // 获得总行数以后，创建多少个li
+//						 createLi(count);
+//					}
+//				});
+//			}
+//
+//			function createLi(num) {
+//				var ul = $("#a");
+//				var page = Math.ceil(num / perpage_num);
+//				for(var i = 0; i < page; i++) {
+//					var li = $("<li/>");
+//					ul.append(li);
+//					li.text(i + 1);
+//				}
+//			}
+//			pageNum();
+//
+//			function click() {
+//
+//			}
+//			div.onclick = click;
+//			div.onclick = null;
+			// div.addEventListener("click",click);
+//		})();
+
+		//	 for(var i=0;i<obj.length;i++){
+		//             	var li1=$('<li/>')
+		//             	li1.css({width:'20%',height:'500px',float:'left'})
+		//             ul1.append(li1)
+		////             }
+		////             for(var i=0;i<li1.length;i++){
+		//          
+		//             	var mod_shadow=$('<div/>');
+		//             	mod_shadow.addClass('mod_shadow');
+		//             	li1.append(mod_shadow);
+		//             	var mod_up=$('<div/>');
+		//            	mod_up.addClass('mod_up');
+		//
+		////				mod_up.attr('class','mod_up');
+		//             	mod_shadow.append(mod_up);
+		//             //添加图片
+		//             var img =$('<img/>');
+		//             img.addClass('big');
+		//             img[0].src = "../shujuimg/"+ obj[i].pictrue;
+		//             //console.log("../shujuimg/"+ obj[i].pictrue)
+		//             mod_up.append(img);
+		//             var a1=$('<a/>');
+		//             
+		//             var b=obj[i].id;
+		//           console.log(b)
+		////             a1[0].location.href="下一个网页?id="+obj[i].id;
+		////             $('a1[0]').location.href=" http://127.0.0.1/ninny/html/html/index5.html?id="+obj[i].id;
+		////             $(a1[0]).attr('href'," http://127.0.0.1:8020/ninny/html/html/index5_1.html?id="+obj[i].id)
+		//             a1[0].href=" http://127.0.0.1/ninny/html/html/index5_1.html?id="+obj[i].id;
+		//             mod_up.append(a1);
+		//             var run_down=$('<div/>');
+		//             run_down.addClass('run_down');
+		//             a1.append(run_down);
+		//             var mod_bg=$('<div/>');
+		//             mod_bg.addClass(' mod_bg');
+		//             mod_up.append(mod_bg);
+		//             var pic_down=$('<div/>');
+		//             pic_down.addClass('pic_down');
+		//             pic_down.text(obj[i].title)
+		//             mod_shadow.append(pic_down);
+		//             
+		//             } 
+		//	  var mainmid = $('.main_mid')
+		//
+		//function wlqq(obj, callBack) {
+		//	var request = new XMLHttpRequest();
+		//	request.open('GET', obj.Con, true);
+		//	request.getResponseHeader('obj.headerKey', 'obj.headerKey');
+		//	request.send()
+		//	request.onreadystatechange = function() {
+		//		if(request.readyState == 4 && request.status == 200) {
+		//			var str = request.responseText;
+		//			var obj = JSON.parse(str);
+		//
+		//
+		//			if(callBack) {
+		//				callBack(obj);
+		//			}
+		//
+		//		}
+		//	}
+		//}
+		//
+		//function getvl(name) {
+		//	var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
+		//	if(reg.test(location.href)) return decodeURI(RegExp.$2.replace(/\+/g, " "));
+		//	return "";
+		//};
+		//var value = getvl("id");
+		//console.log(value);
+		////wlqq({
+		////	Con: '../../php/php/index5_1.php?id='+value,
+		////		// headerKey:''
+		////		// headerKey:''
+		////}, function(obj) {
+		////	
+		////	console.log(obj)
+		////})
+		//$.ajax({
+		//	type:"get",
+		//	url:"../../php/php/index5_1.php?id="+value,
+		//	async:true,
+		//	success:function (obj) {
+		//		var arr = JSON.parse(obj);
+		//		console.log(arr);
+		//	}
+		//});
+	</script>
+
 </html>

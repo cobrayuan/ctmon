@@ -53,91 +53,26 @@
 			<div class="main">
 				<div class="about_conta_top">
 					<div class="about_conta_topl">
-						<img src="../img/chanpin/pro_a.jpg"/>
+						<img src="../img/anli/case_a.jpg"/>
 					</div>
 					<div class="about_conta_topr">
 						<div class="about_conta_toprt">
 							<span>当前位置</span>
 							<a href="index.html">首页</a>
-							>
-							<a href="chanpin.html">产品中心</a>
+							|
+							<a href="anli.html">客户案例</a>
 						</div>
 						<div class="about_conta_toprb">
-							<a class="c1t" href="chanpin.html?c=1">全网营销平台</a>
-							<a class="c2t" href="chanpin.html?c=2">移动互联网定制</a>
-							<a class="c3t" href="chanpin.html?c=3">企业商城</a>
-							<a class="c4t" href="chanpin.html?c=4">263云通讯</a>
-							<a class="c5t" href="chanpin.html?c=5">网络基础业务</a>
-							<a class="c6t" href="chanpin.html?c=6">网络营销外包</a>
+							<a href="#">全网营销平台</a>
+							<a href="#">移动互联网</a>
+							<a href="#">企业商城</a>
+							<a href="#">263云通讯</a>
 						</div>
 					</div>
 				</div>
-				<div class="pro">
-					<div class="pro_l">
-						<a href="#">
-							<img src="../img/chanpin/pro_b.jpg"/>
-						</a>
-						<div>
-							<a href="chanpin.html?c=1" class="linkc1 cur"></a>
-						</div>
-						<div>
-							<a href="chanpin.html?c=2" class="linkc2"></a>
-						</div>
-						<div>
-							<a href="chanpin.html?c=3" class="linkc3"></a>
-						</div>
-						<div>
-							<a href="chanpin.html?c=4" class="linkc4"></a>
-						</div>
-						<div>
-							<a href="chanpin.html?c=5" class="linkc5"></a>
-						</div>
-						<div>
-							<a href="chanpin.html?c=6" class="linkc6"></a>
-						</div>
-					</div>
-					<div class="pro_r">
-						<div class="pro_r_cz">
-							<!--c=1-->
-							<div class="c1bg">
-								<img src="../img/chanpin/c1bg1.png"/>
-								<img src="../img/chanpin/c1bg2.png"/>
-								<img src="../img/chanpin/c1bg3.png"/>
-							</div>
-							<div class="c2bg">
-								<img src="../img/chanpin/c2bg1.png"/>
-								<img src="../img/chanpin/c2bg2.png"/>
-								<img src="../img/chanpin/c2bg3.png"/>
-								<img src="../img/chanpin/c2bg4.png"/>
-								<img src="../img/chanpin/c2bg5.png"/>
-								<img src="../img/chanpin/c2bg6.png"/>
-								<img src="../img/chanpin/c2bg7.png"/>
-								<img src="../img/chanpin/c2bg8.png"/>
-							</div>
-							<div class="c3bg">
-								<img src="../img/chanpin/c3bg1.png"/>
-								<img src="../img/chanpin/c3bg2.png"/>
-								<img src="../img/chanpin/c3bg3.png"/>
-								<img src="../img/chanpin/c3bg4.png"/>
-								<img src="../img/chanpin/c3bg5.png"/>
-							</div>
-							<div class="c4bg">
-								<img src="../img/chanpin/c4bg1.png"/>
-								<img src="../img/chanpin/c4bg2.png"/>
-								<img src="../img/chanpin/c4bg3.png"/>
-							</div>
-							<div class="c5bg">
-								<img src="../img/chanpin/c5bg1.png"/>
-								<img src="../img/chanpin/c5bg2.png"/>
-								<img src="../img/chanpin/c5bg3.png"/>							
-							</div>
-							<div class="c6bg">
-								<img src="../img/chanpin/c6bg1.png"/>
-								<img src="../img/chanpin/c6bg2.png"/>
-							</div>
-							
-						</div>
-					</div>
+				<div class="about_conta_mid" style="margin-top:50px">
+					
+				</div>
 				</div>
 			</div>
 		</div>
@@ -251,5 +186,63 @@
 		</div>
 		<!-----------bottom---------------------------------------->
 	</body>
-	<script type="text/javascript" src="../js/chanpin.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function createAnli(obj){
+			var mid = $('.about_conta_mid');
+			var case_al = $('<div/>');
+			case_al.addClass('case_al');
+			mid.append(case_al);
+			var case_ala = $('<div>'+obj.inanli_title+'<div/>');
+			case_ala.addClass('case_ala');
+			case_al.append(case_ala);
+			var case_alb = $('<div/>');
+			case_alb.addClass('case_alb');
+			case_al.append(case_alb);
+			var ul = $('<ul/>');
+			case_alb.append(ul);
+			var li = $('<li>客户名称 | '+obj.inanli_khmc+'<li/>');
+			ul.append(li);
+			var ul = $('<ul/>');
+			case_alb.append(ul);
+			var li = $('<li>项目类别 | '+obj.inanli_xmlb+'<li/>');
+			ul.append(li);
+			var ul = $('<ul/>');
+			case_alb.append(ul);
+			var li = $('<li>行业类别 | '+obj.inanli_hylb+'<li/>');
+			ul.append(li);
+			var case_alc = $('<div>'+obj.inanli_text+'<div/>');
+			case_alc.addClass('case_alc');
+			case_al.append(case_alc);
+			var case_img = $('<img src="../img/inanli/'+obj.inanli_img+'">');
+			case_img.addClass('case_img');
+			mid.append(case_img);
+		}
+		function getvl(name) {
+		  var reg = new RegExp("(^|\\?|&)" + name + "=([^&]*)(\\s|&|$)", "i");
+		  if (reg.test(location.href)) return unescape(RegExp.$2.replace(/\+/g, " "));
+			return "";
+		};
+		var a = getvl('a');
+		function requestAjax(url,callBack){
+	    var request = new XMLHttpRequest();
+	    request.open('GET',url,true);
+	    request.send();
+	    request.onreadystatechange = function(){
+	      if (request.readyState == 4 && request.status == 200) {
+	        var str = request.responseText;
+	        var obj = JSON.parse(str);
+	        if (callBack) {
+	          callBack(obj);
+	        }
+	      }
+	    }
+		 }
+	  requestAjax("../../php/code/inanli.php?a="+a,function(obj){
+	  		for (var i = 0; i < obj.length; i++) {		
+	  			createAnli(obj[i]);
+	  		}
+//	  		console.log(obj);
+	  })
+	</script>
 </html>

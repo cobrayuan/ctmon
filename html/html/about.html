@@ -32,7 +32,7 @@
 					</div>
 					<div class="about_nav_bot">
 						<div class="about_nava">
-							<a href="#">产品升级</a>
+							<!--<a href="#">产品升级</a>-->
 							<a href="fangan.html">解决方案</a>
 							<a href="fuwu.html">服务专区</a>
 							<a href="zhishi.html">知识学院</a>
@@ -84,8 +84,19 @@
 						</div>
 					</div>
 				</div>
+				<div id="new_one">
+		  			<div class="new_two">
+		  				
+		  			</div>
+		  			<div class="tcdPageCode">
+		  				
+		  			</div>
+		  		</div>
 			</div>
 		</div>
+		
+		
+		
 		
 		<!-----------bottom---------------------------------------->
 		<div class="link about_link_cont">
@@ -196,4 +207,116 @@
 		</div>
 		<!-----------bottom---------------------------------------->
 	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../js/jquery.page.js" ="text/javascript"></script>
+	<script type="text/javascript">
+		//// 1.总共有多少行数据
+//  // 2.第一页所显示的数据内容详情
+//  // 3.点击页数获得当前也的数据详情
+//  var perpage_num = 20;
+//  function pageNum() {
+//      $.ajax({
+//          url:"../../php/php/index6.php?page=1&num=5",
+//          type:"GET",
+//          success:function (value) {
+//              console.log(value);
+//              // var obj = JSON.parse(value);
+//              // var count = obj[0].count;
+//              // // 获得总行数以后，创建多少个li
+//              // createLi(count);
+//          }
+//      });
+//  }
+//  function createLi(num) {
+//      var ul = $("ul");
+//      var page = Math.ceil(num / perpage_num);
+//      for (var i = 0; i < page; i++) {
+//          var li = $("<li/>");
+//          ul.append(li);
+//          li.text(i+1);
+//      }
+//  }
+//  pageNum();
+//
+//  function click() {
+//
+//  }
+////  div.onclick = click;
+////  div.onclick = null;
+////  // div.addEventListener("click",click);
+
+var new_one = $(".new_two");
+var page = $(".tcdPageCode");
+$.ajax({
+	type: "get",
+	url: "../../php/code/about.php?num=0",
+	async: true,
+	success: function(obj) {
+		var my = JSON.parse(obj);
+//		console.log(my)
+		for(var i = 0; i < my.length; i++) {
+			var a1 = $("<a/>");
+			a1[0].href=" http://127.0.0.1/html/html/about.html?id="+my[i].about_id;
+			a1.addClass("about_wrap");
+			new_one.append(a1);
+			var div1 = $("<div/>");
+			div1.addClass("about_inl");
+			a1.append(div1);
+			var p1 = $("<p>"+my[i].about_day+"<p/>");
+			p1.addClass("about_inlp");
+			div1.append(p1);
+			var div2 = $("<div>"+my[i].about_month+"<div/>");
+			div1.append(div2);
+			var div3 = $("<div/>");
+			div3.addClass("about_inr");
+			a1.append(div3);
+			var p2 = $("<p>"+my[i].about_q+"<p/>");
+			p2.addClass("about_inrp");
+			div3.append(p2);
+			var div4 = $("<div>"+my[i].about_a+"<div/>");
+			div3.append(div4);
+		}
+	}
+});
+page.createPage({
+	pageCount: 2,
+	current: 1,
+	backFn: function(p) {
+		$(".about_wrap").remove();
+		var a = (p - 1) * 10;
+		console.log(a)
+		$.ajax({
+			type: "get",
+			url: "../../php/code/about.php?num="+a,
+			async: true,
+			success: function(obj) {
+				var my = JSON.parse(obj);
+				console.log(my)
+				for(var i = 0; i < my.length; i++) {
+					var a1 = $("<a/>");
+					a1[0].href=" http://127.0.0.1/html/html/about.html?id="+my[i].about_id;
+					a1.addClass("about_wrap");
+					new_one.append(a1);
+					var div1 = $("<div/>");
+					div1.addClass("about_inl");
+					a1.append(div1);
+					var p1 = $("<p>"+my[i].about_day+"<p/>");
+					p1.addClass("about_inlp");
+					div1.append(p1);
+					var div2 = $("<div>"+my[i].about_month+"<div/>");
+					div1.append(div2);
+					var div3 = $("<div/>");
+					div3.addClass("about_inr");
+					a1.append(div3);
+					var p2 = $("<p>"+my[i].about_q+"<p/>");
+					p2.addClass("about_inrp");
+					div3.append(p2);
+					var div4 = $("<div>"+my[i].about_a+"<div/>");
+					div3.append(div4);
+				}
+			}
+		});
+	}
+});
+	</script>
 </html>

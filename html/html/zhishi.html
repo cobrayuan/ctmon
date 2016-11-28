@@ -32,7 +32,7 @@
 					</div>
 					<div class="about_nav_bot">
 						<div class="about_nava">
-							<a href="#">产品升级</a>
+							<!--<a href="#">产品升级</a>-->
 							<a href="fangan.html">解决方案</a>
 							<a href="fuwu.html">服务专区</a>
 							<a href="zhishi.html">知识学院</a>
@@ -83,7 +83,7 @@
 					</div>
 					<div class="coll_b">
 						<div class="coll_ba aa">
-							<ul style="width:1470px">
+							<ul class="imgul" style="width:1470px">
 								<li>
 									<a href="#">
 										<img src="../img/zhishi/20161020190139_1077.jpg" height="245" width="490"/>
@@ -343,4 +343,36 @@
 		<!-----------bottom---------------------------------------->
 		
 	</body>
+	<script type="text/javascript">
+		var left = document.querySelector('.coll_ba_fir');
+		var right = document.querySelector('.coll_ba_be');
+		var lr = document.querySelector('.coll_ba');
+		var ul = document.querySelector('.imgul');
+		var a = 490;
+		lr.onmouseover = function(){
+			left.style.left = 0;
+			right.style.right = 0;
+		}
+		lr.onmouseout = function(){
+			left.style.left = '-24px';
+			right.style.right = '-24px';
+		}
+		console.log(ul.offsetLeft);
+		right.onclick = function(){
+			if(ul.offsetLeft > -960){
+				ul.style.left = ul.offsetLeft - a + 'px';
+				console.log(ul.style.left);
+			}else{
+				ul.style.left = -960;
+			}
+		}
+		left.onclick = function(){
+			if(ul.offsetLeft < 0){
+				ul.style.left = ul.offsetLeft + a + 'px';
+				console.log(ul.style.left);
+			}else{
+				ul.style.left = 0;
+			}
+		}
+	</script>
 </html>

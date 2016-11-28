@@ -32,7 +32,7 @@
 					</div>
 					<div class="about_nav_bot">
 						<div class="about_nava">
-							<a href="#">产品升级</a>
+							<!--<a href="#">产品升级</a>-->
 							<a href="fangan.html">解决方案</a>
 							<a href="fuwu.html">服务专区</a>
 							<a href="zhishi.html">知识学院</a>
@@ -84,6 +84,14 @@
 						</div>
 					</div>
 				</div>
+				<div id="new_one">
+		  			<div class="new_two">
+		  				
+		  			</div>
+		  			<div class="tcdPageCode">
+		  				
+		  			</div>
+		  		</div>
 			</div>
 		</div>
 		
@@ -209,4 +217,67 @@
 		<!-----------bottom---------------------------------------->
 		
 	</body>
+	
+	
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="../js/jquery.page.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var new_one = $(".new_two");
+		var page = $(".tcdPageCode");
+		$.ajax({
+			type: "get",
+			url: "../../php/code/qa.php?num=0",
+			async: true,
+			success: function(obj) {
+				var my = JSON.parse(obj);
+		//		console.log(my)
+				for(var i = 0; i < my.length; i++) {
+					var a1 = $("<a/>");
+					a1[0].href=" http://127.0.0.1/html/html/qa.html?id="+my[i].q_id;
+					a1.addClass("about_wrap");
+					new_one.append(a1);
+					var div3 = $("<div/>");
+					div3.addClass("about_inr");
+					a1.append(div3);
+					var p2 = $("<p>"+my[i].question+"<p/>");
+					p2.addClass("about_inrp");
+					div3.append(p2);
+					var div4 = $("<div>"+my[i].answer+"<div/>");
+					div3.append(div4);
+				}
+			}
+		});
+		page.createPage({
+			pageCount: 2,
+			current: 1,
+			backFn: function(p) {
+				$(".about_wrap").remove();
+				var a = (p - 1) * 10;
+				console.log(a)
+				$.ajax({
+					type: "get",
+					url: "../../php/code/qa.php?num="+a,
+					async: true,
+					success: function(obj) {
+						var my = JSON.parse(obj);
+						console.log(my)
+						for(var i = 0; i < my.length; i++) {
+							var a1 = $("<a/>");
+							a1[0].href=" http://127.0.0.1/html/html/qa.html?id="+my[i].q_id;
+							a1.addClass("about_wrap");
+							new_one.append(a1);
+							var div3 = $("<div/>");
+							div3.addClass("about_inr");
+							a1.append(div3);
+							var p2 = $("<p>"+my[i].question+"<p/>");
+							p2.addClass("about_inrp");
+							div3.append(p2);
+							var div4 = $("<div>"+my[i].answer+"<div/>");
+							div3.append(div4);
+						}
+					}
+				});
+			}
+		});
+	</script>
 </html>

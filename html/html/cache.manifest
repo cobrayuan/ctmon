@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# 2016-11-03 v1.0.1
+index.html
+zhishi.html
+anli.html
+about.html
+chanpin.html
+fangan.html
+fuwu.html
+inanli.html
+../css/ctmon.css
+../css/img.css
+../js/chanpin.js
+../js/img.js
+../js/index.js
+
+NETWORK:
+*
+
+FALLBACK:
+index2.html 404.html
